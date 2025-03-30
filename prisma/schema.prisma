@@ -23,3 +23,61 @@ model Books {
   updatedAt DateTime @updatedAt
 
 }
+
+
+// Post Model
+model Post {
+  id Int @id @default(autoincrement())
+  title String
+  content String
+  authorId Int
+  author User @relation(fields: [authorId], references: [id])
+  postCategory PostCategory[]
+  published Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// User Model
+model User {
+  id Int @id @default(autoincrement())
+  username String @unique
+  email String
+  role UserRole @default(user)
+  profile Profile?
+  post Post[]
+  @@map("users")
+}
+
+// Profile Mode
+model Profile {
+  id Int @id @default(autoincrement())
+  bio String?
+  userId Int @unique
+  user User @relation(fields: [userId], references: [id])
+  @@map("profiles")
+}
+
+// User Role
+enum UserRole {
+  user 
+  admin
+}
+
+
+
+// Category Model
+model Category {
+  id Int @id @default(autoincrement())
+  name String
+  postCategory PostCategory[]
+}
+
+// Primary Model or Table
+model PostCategory{
+  postId Int
+  categoryId Int
+  post Post @relation(fields: [postId], references: [id])
+  category Category @relation(fields: [categoryId], references: [id])
+  @@id([postId, categoryId])
+}
