@@ -44,7 +44,6 @@ const paginationPrisma = async () =>{
             published: true
         }
      })
-    console.log(desendingSortingNumberWiseResult)
 }
 
 paginationPrisma()
