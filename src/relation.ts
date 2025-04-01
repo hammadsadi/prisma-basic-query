@@ -30,13 +30,21 @@ const main = async() =>{
     // Create Post
     // const createdPost = await prisma.post.create({
     //     data:{
-    //         title:"Node  Js Developer",
-    //         content: 'Im Node JS Developer and Full Stack Developer',
+    //         title:"Node  Js Developer 1",
+    //         content: 'Im Node JS Developer and Full Stack Developer 1',
     //         authorId: 4,
     //         postCategory:{
-    //             create:{
-    //                categoryId: 2
-    //             }
+    //             create:[
+    //                 {
+    //                     categoryId: 2
+    //                 },
+    //                 {
+    //                     categoryId: 4
+    //                 },
+    //                 {
+    //                     categoryId: 7
+    //                 }
+    //             ]
     //         }
     //     },
     //     include:{
